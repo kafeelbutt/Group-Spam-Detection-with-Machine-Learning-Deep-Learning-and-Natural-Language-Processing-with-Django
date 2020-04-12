@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <style>
+                .contact-wrap{
+                    width:60%;
+                    height:400px;
+                    margin-left: 240px;
+                    margin-top: 90px;
+                }
+        .top-menu{
+			border-bottom: 3px solid #FFC300;
+		}
+            </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+
+	<!-- Flexslider  -->
+	<link rel="stylesheet" href="{% static 'css/flexslider.css' %}">
+
+	<!-- Owl Carousel -->
+	<link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+	
+	<!-- Date Picker -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+	<!-- Flaticons  -->
+	<link rel="stylesheet" href="{% static 'fonts/flaticon/font/flaticon.css' %}">
+
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+	<!-- Modernizr JS -->
+	<script src="{% static 'js/modernizr-2.6.2.min.js' %}"></script>
+</head>
+<body>
+				<nav class="colorlib-nav" role="navigation">
+					<div class="top-menu">
+						<div class="container">
+							<div class="row">
+								<div class="col-xs-2">
+									<div id="colorlib-logo"><a href="index.html">Store</a></div>
+								</div>
+								<div class="col-xs-10 text-right menu-1">
+									<ul>
+										<li><a href="index.html">Home</a></li>
+										<li><a href="shop.html">Shop</a></li>
+										<li><a href="about.html">About</a></li>
+										<li><a href="contact.html">Contact</a></li>
+										{% if user.is_authenticated %}
+										<li>Hello,{{user.username}}</li>
+										<li><a href="logout.html">logout</a></li>
+										{% else %}
+										<li><a href="register.html">Register</a></li>
+										<li  class="active"><a href="login.html">Login</a></li>
+										{% endif %}
+										<li><a href="cart.html"><i class="icon-shopping-cart"></i> Cart [0]</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</nav>
+        <div class="col-md-10 col-md-offset-1">
+                <div class="contact-wrap">
+                    <h3>Login</h3>
+                    <br>
+                    <form action="login.html"  method = 'post'>
+                        {% csrf_token %}
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <label for="username">Username</label>
+                                <input type="text" name = "username" id="username" class="form-control" placeholder="Your Username">
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <label for="password">Password</label>
+                                <input type="text" name=password id="password" class="form-control" placeholder="Enter Password">
+                            </div>
+                        </div>
+
+                        <div class="form-group text-center">
+                            <input type="submit" value="Log in" class="btn btn-primary">
+                        </div>
+                    </form>	
+                    <div>
+                            {% for message in messages %}
+                            <h3> {{message}} </h3>
+                            {% endfor %}
+                        </div>
+                </div>
+                
+            <hr style="border-color:black">
+            </div>
+ 
+		<footer id="colorlib-footer" role="contentinfo">
+			<div class="container">
+				<div class="row row-pb-md">
+					<div class="col-md-3 colorlib-widget">
+						<h4>About Store</h4>
+						<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
+						<p>
+							<ul class="colorlib-social-icons">
+								<li><a href="#"><i class="icon-twitter"></i></a></li>
+								<li><a href="#"><i class="icon-facebook"></i></a></li>
+								<li><a href="#"><i class="icon-linkedin"></i></a></li>
+								<li><a href="#"><i class="icon-dribbble"></i></a></li>
+							</ul>
+						</p>
+					</div>
+					<div class="col-md-3">
+						<h4>Contact Information</h4>
+						<ul class="colorlib-footer-links">
+							<li>291 South 21th Street, <br> Suite 721 New York NY 10016</li>
+							<li><a href="tel://1234567920">+ 1235 2355 98</a></li>
+							<li><a href="mailto:info@yoursite.com">info@yoursite.com</a></li>
+							<li><a href="#">yoursite.com</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+		</footer>
+    </div>
+    <div class="gototop js-top">
+            <a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
+        </div>
+
+</body>
+</html>
